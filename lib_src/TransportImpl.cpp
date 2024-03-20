@@ -24,7 +24,7 @@ struct MyImpl : public Transport::Impl {
         cout << __PRETTY_FUNCTION__ << ' ' << __FILE__ << ' ' << data << ' ' << counter << endl;
     }
 
-    string process(const string& arg)
+    string process(const string& arg) override
     {
         stringstream ss;
         ss << data << '+' << arg << '+' << counter;
@@ -32,7 +32,7 @@ struct MyImpl : public Transport::Impl {
         return ss.str();
     }
 
-    void process_with_callable(function<string (size_t)> func)
+    void process_with_callable(function<string (size_t)> func) override
     {
         cout << __PRETTY_FUNCTION__ << ' ' << __FILE__ << " got " << func(345) << " from callable" << endl;
     }

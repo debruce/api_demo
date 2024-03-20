@@ -17,10 +17,8 @@ public:
     bool is_same(const Transport& other) const { return this->pImpl == other.pImpl; }
 
     std::string process(const std::string& arg);
-
     void process_with_callable(std::function<Uuid (size_t)>);
 
-    static void force_inst();
 private:
     std::string open_fail_desc;
     std::shared_ptr<Impl> pImpl;
