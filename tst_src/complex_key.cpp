@@ -57,13 +57,10 @@ struct Uri {
 
     Uri(const string& x, const string& y, const string& z) : x(x), y(y), z(z) {}
 
-    bool operator==(const Uri& obj) const
-    {
-        return std::tie(x,y,z) == std::tie(obj.x, obj.y, obj.z);
-    }
-
     const std::tuple<std::string, std::string, std::string> as_tuple() const { return std::tie(x, y, z); }
 };
+
+bool operator==(const Uri& lhs, const Uri& rhs) { return lhs.as_tuple() == rhs.as_tuple(); }
 
 template <>
 struct std::hash<Uri>
